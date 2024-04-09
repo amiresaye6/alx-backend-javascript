@@ -73,3 +73,7 @@ function addd (arrayone = []) {
 let nums = [1,2,3,4,5,6];
 console.log(nums.includes(77)); // false
 console.log(nums.includes(2)); // true
+
+// import functions and stuff
+import getSumOfHoods from './5-spread-operator';
+let getSumOfHoods = new getSumOfHoods();
