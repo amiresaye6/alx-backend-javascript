@@ -45,3 +45,31 @@ let ammm = {
 console.log(amirAlsayed.firstName_);
 amirAlsayed.firstName_ = "amir";
 console.log(amirAlsayed.firstName_);
+
+function sumAll(...nums) { // rest operator userd if you dont know how many args are being bassed to the function
+    let res = 0;
+    for (const i of nums) {
+        res += i;
+    }
+    return res;
+}
+//arrow function :anonimous:
+function add (...nubers) {
+    let total = nubers.reduce((x, y) => x + y);
+    console.log(total);
+}
+
+//default paramters
+
+function addd (arrayone = []) {
+    let total = 0;
+    arrayone.forEach((elment) => {
+    total += elment;
+    })
+    console.log(total);
+}
+
+//includes
+let nums = [1,2,3,4,5,6];
+console.log(nums.includes(77)); // false
+console.log(nums.includes(2)); // true
