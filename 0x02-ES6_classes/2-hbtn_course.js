@@ -33,6 +33,6 @@ export default class HolbertonCourse {
 
   set students(newStudents) {
     if (Array.isArray(newStudents)) throw new TypeError('students must be an array');
-    this._students = newStudents;
+    this._students = newStudents;// eslint-disable-line no-underscore-dangle
   }
 }
