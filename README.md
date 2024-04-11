@@ -1,2 +1,1 @@
-# alx-backend-javascript
-First Repo in the specialization phase
+some text for now to test
