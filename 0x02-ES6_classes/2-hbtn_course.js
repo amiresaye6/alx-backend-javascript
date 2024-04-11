@@ -1,38 +1,38 @@
 export default class HolbertonCourse {
   constructor(name, length, students) {
-    if (typeof (name) !== 'string') throw TypeError('Name must be a string');
-    if (!Number.isInteger(length)) throw TypeError('Length must be a number');
-    if (!Array.isArray(students)) throw TypeError('Students must be an array of strings');
+    if (typeof name !== 'string') throw new TypeError('name must be a string');
+    if (!Number.isInteger(length)) throw new TypeError('length must be a number');
+    if (!Array.isArray(students)) throw new TypeError('students type must be an Array');
 
-    this._name = name; // eslint-disable-line no-underscore-dangle
-    this._length = length;// eslint-disable-line no-underscore-dangle
-    this._students = students;// eslint-disable-line no-underscore-dangle
+    this._name = name;
+    this._length = length;
+    this._students = students;
   }
 
   get name() {
-    return (this._name);// eslint-disable-line no-underscore-dangle
+    return this._name;
   }
 
-  set name(newName) {
-    if (typeof (newName) !== 'string') throw new TypeError('name must be a string');
-    this._name = newName;// eslint-disable-line no-underscore-dangle
+  set name(value) {
+    if (typeof value !== 'string') throw new TypeError('name must be a string');
+    this._name = value;
   }
 
   get length() {
-    return (this._length);// eslint-disable-line no-underscore-dangle
+    return this._length;
   }
 
-  set length(newLength) {
-    if (Number.isInteger(newLength)) throw new TypeError('length must be a intger');
-    this._length = newLength;// eslint-disable-line no-underscore-dangle
+  set length(value) {
+    if (!Number.isInteger(value)) throw new TypeError('length must be a number');
+    this._length = value;
   }
 
   get students() {
-    return (this._students);// eslint-disable-line no-underscore-dangle
+    return this._students;
   }
 
-  set students(newStudents) {
-    if (Array.isArray(newStudents)) throw new TypeError('students must be an array');
-    this._students = newStudents;// eslint-disable-line no-underscore-dangle
+  set students(value) {
+    if (!Array.isArray(value)) throw new TypeError('students type must be an Array');
+    this._students = value;
   }
 }
