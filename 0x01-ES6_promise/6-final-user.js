@@ -8,3 +8,4 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
       signUpUser(firstName, lastName), uploadPhoto(fileName),
     ]);
 }
+console.log(handleProfileSignup("Bob", "Dylan", "bob_dylan.jpg"));
