@@ -11,5 +11,3 @@ export default function cleanSet(set, startString) {
   }
   return res.slice(0, -1);
 }
-console.log(cleanSet(new Set(['bonjovi', 'bonaparte', 'bonappetit', 'banana']), 'bon'));
-console.log(cleanSet(new Set(['bonjovi', 'bonaparte', 'bonappetit', 'banana']), ''));
