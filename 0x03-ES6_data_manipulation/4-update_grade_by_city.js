@@ -1,10 +1,11 @@
 export default function updateStudentGradeByCity(objArray, city, grades) {
   return objArray.filter(({ location }) => location === city).map((obj) => {
+    let newGrade = 'N/A';
     grades.forEach((element) => {
       if (element.studentId === obj.id) {
-        obj.grade = element.grade; // eslint-disable-line no-param-reassign
+        newGrade = element.grade ? element.grade : 'N/A';
       }
     });
-    return obj;
+    return { ...obj, grade: newGrade };
   });
 }
