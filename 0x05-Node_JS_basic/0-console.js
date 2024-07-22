@@ -4,8 +4,8 @@
  * @author Amir Alsayed <https://github.com/amiresaye6>
  */
 
-const displayMessage = (msg) => {
+function displayMessage(msg) {
   console.log(msg);
-};
+}
 
 module.exports = displayMessage;
