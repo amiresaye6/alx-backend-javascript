@@ -7,7 +7,7 @@ const port = 1245;
 app.use('/', router);
 
 app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+  console.log(`Server listening on port ${port}`);
 });
 
 module.exports = app;
