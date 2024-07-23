@@ -1,10 +1,42 @@
 const http = require('http');
 const url = require('url');
-const countStudents = require('./3-read_file_async');
+const fs = require('fs').promises;
 
-// Get the database file path from command line arguments
-const dbFilePath = process.argv[2];
+// Function to count students and return formatted data
+async function countStudents(path) {
+  try {
+    const data = await fs.readFile(path, 'utf8');
+    const lines = data.split('\n').filter((line) => line.trim() !== '');
 
+    if (lines.length === 0) {
+      throw new Error('Cannot load the database');
+    }
+
+    const students = lines.slice(1);
+    const numberOfStudents = students.length;
+    let result = `Number of students: ${numberOfStudents}\n`;
+
+    const fields = {};
+    students.forEach((student) => {
+      const [firstname,,, field] = student.split(',');
+
+      if (!fields[field]) {
+        fields[field] = [];
+      }
+      fields[field].push(firstname);
+    });
+
+    for (const [field, studentsList] of Object.entries(fields)) {
+      result += `Number of students in ${field}: ${studentsList.length}. List: ${studentsList.join(', ')}\n`;
+    }
+
+    return result.trim();
+  } catch (error) {
+    throw new Error('Cannot load the database');
+  }
+}
+
+// Create the HTTP server
 const app = http.createServer(async (req, res) => {
   if (req.method === 'GET') {
     const path = url.parse(req.url).pathname;
@@ -16,6 +48,7 @@ const app = http.createServer(async (req, res) => {
     } else if (path === '/students') {
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/plain');
+      const dbFilePath = process.argv[2];
 
       if (!dbFilePath) {
         res.end('Database file path not provided.');
